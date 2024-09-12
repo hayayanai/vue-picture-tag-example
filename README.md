@@ -29,7 +29,7 @@ bun dev
 ### Type-Check, Compile and Minify for Production
 
 ```sh
-bun build
+bun run build
 ```
 
 ### Lint with [ESLint](https://eslint.org/)
