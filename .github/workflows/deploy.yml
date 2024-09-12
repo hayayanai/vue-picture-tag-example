@@ -2,12 +2,18 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches:
-      - main # デプロイをトリガーするブランチを指定
+    branches: ['main']
+  pull_request:
+    branches: ['main']
+  workflow_dispatch:
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
 
     steps:
       - name: Checkout repository
@@ -15,11 +21,6 @@ jobs:
 
       - name: setup-bun
         uses: oven-sh/setup-bun@v2
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
 
       - name: Install dependencies
         run: bun install --frozen-lockfile
