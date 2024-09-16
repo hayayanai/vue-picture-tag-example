@@ -6,21 +6,21 @@ const { src, alt } = defineProps<{
   alt?: string
 }>()
 
-const srcPathWithoutExt = computed<string>(() => {
-  return src.replace(/\.\w+$/, '')
+const srcPath = computed<string>(() => {
+  return import.meta.env.BASE_URL + src.replace(/\.\w+$/, '')
 })
 </script>
 
 <template>
   <picture>
     <slot name="source-avif">
-      <source type="image/avif" :srcset="`${srcPathWithoutExt}.avif`" />
+      <source type="image/avif" :srcset="`${srcPath}.avif`" />
     </slot>
     <slot name="source-webp">
-      <source type="image/webp" :srcset="`${srcPathWithoutExt}.webp`" />
+      <source type="image/webp" :srcset="`${srcPath}.webp`" />
     </slot>
     <slot name="img">
-      <img :src="`${srcPathWithoutExt}.png`" :alt="alt" :class="$attrs.class" />
+      <img :src="`${srcPath}.png`" :alt="alt" :class="$attrs.class" />
     </slot>
     <slot></slot>
   </picture>
