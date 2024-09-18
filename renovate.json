@@ -3,8 +3,8 @@
   "extends": [
     "config:recommended"
   ],
-   "major": {
-     "enabled": false
-  },
   "requiredStatusChecks": null,
+  "major": {
+    "enabled": false
+  }
 }
