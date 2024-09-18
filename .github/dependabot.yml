@@ -1,5 +1,16 @@
 name: 'Dependabot: Update bun.lockb'
 
+version: 2
+updates:
+  - package-ecosystem: 'bun'
+    directory: '/'
+    schedule:
+      interval: 'daily'
+    commit-message:
+      prefix: 'dependabot'
+    target-branch: 'main'
+    open-pull-requests-limit: 5
+
 on: pull_request
 
 permissions:
@@ -7,7 +18,7 @@ permissions:
 
 jobs:
   update-bun-lockb:
-    name: "Update bun.lockb"
+    name: 'Update bun.lockb'
     if: github.actor == 'dependabot[bot]'
     runs-on: ubuntu-latest
     steps:
@@ -21,5 +32,5 @@ jobs:
           git add bun.lockb
           git config --global user.name 'dependabot[bot]'
           git config --global user.email 'dependabot[bot]@users.noreply.github.com'
-          git commit --amend --no-edit 
+          git commit --amend --no-edit
           git push --force
