@@ -13,15 +13,8 @@ const srcPath = computed<string>(() => {
 
 <template>
   <picture>
-    <slot name="source-avif">
-      <source type="image/avif" :srcset="`${srcPath}.avif`" />
-    </slot>
-    <slot name="source-webp">
-      <source type="image/webp" :srcset="`${srcPath}.webp`" />
-    </slot>
-    <slot name="img">
-      <img :src="`${srcPath}.png`" :alt="alt" :class="$attrs.class" />
-    </slot>
-    <slot></slot>
+    <source type="image/avif" :srcset="`${srcPath}.avif`" />
+    <source type="image/webp" :srcset="`${srcPath}.webp`" />
+    <img :src="`${srcPath}.png`" :alt="alt" :class="$attrs.class" />
   </picture>
 </template>
