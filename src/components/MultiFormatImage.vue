@@ -2,7 +2,7 @@
 import { computed } from 'vue'
 
 const { src, alt } = defineProps<{
-  src: string
+  src: number
   alt?: string
 }>()
 
